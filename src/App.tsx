@@ -1,26 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import uuid from 'uuid';
+import SimpleStorage from 'react-simple-storage';
+import ToDos from './components/ToDos';
+import Header from './components/layout/Header';
+import AddToDo from './components/AddToDo';
 import './App.css';
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default class App extends Component {
+  state: { toDos: { id: string; title: string; completed: boolean }[] } = {
+    toDos: []
+  };
 
-export default App;
+  markComplete = (id: string) => {
+    this.setState({
+      toDos: this.state.toDos.map(toDo => {
+        if (toDo.id === id) {
+          toDo.completed = !toDo.completed;
+        }
+        return toDo;
+      })
+    });
+  };
+
+  deleteToDo = (id: string) => {
+    this.setState({
+      toDos: [...this.state.toDos.filter(toDo => toDo.id !== id)]
+    });
+  };
+
+  addToDo = (title: string) => {
+    const newTodo = {
+      id: uuid.v4(),
+      title,
+      completed: false
+    };
+    this.setState({
+      toDos: [...this.state.toDos, newTodo]
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <SimpleStorage parent={this} />
+        <Header />
+        <AddToDo addToDo={this.addToDo} />
+        <ToDos
+          toDos={this.state.toDos}
+          markComplete={this.markComplete}
+          deleteToDo={this.deleteToDo}
+        />
+      </div>
+    );
+  }
+}
