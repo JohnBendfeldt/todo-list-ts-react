@@ -23,13 +23,13 @@ export default class ToDoItem extends Component<ToDoItemProps> {
     };
 
     render() {
-        const { id, title } = this.props.toDo;
+        const { id, title, completed } = this.props.toDo;
         const { markComplete, deleteToDo } = this.props;
         return (
             <Card style={this.getStyle() as any}>
                 <p>
                     <Checkbox
-                        checked={this.props.toDo.completed}
+                        checked={completed}
                         onChange={markComplete.bind(this, id)}
                         onKeyPress={this.handleEnterKeyPress(
                             markComplete.bind(this, id)
