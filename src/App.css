@@ -21,3 +21,13 @@ a {
     left: 3px;
     font-size: 16px !important;
 }
+
+.iconStyle {
+    margin: 10px 10px 0px 0px;
+    cursor: pointer;
+    float: right;
+}
+
+.iconStyle:hover {
+    color: #f50057;
+}
