@@ -16,19 +16,33 @@ export default class ToDoItem extends Component<ToDoItemProps> {
         };
     };
 
+    handleEnterKeyPress = (onClick: any) => ({ key }: { key: any }) => {
+        if (key === 'Enter') {
+            onClick();
+        }
+    };
+
     render() {
         const { id, title } = this.props.toDo;
+        const { markComplete, deleteToDo } = this.props;
         return (
             <Card style={this.getStyle() as any}>
                 <p>
                     <Checkbox
                         checked={this.props.toDo.completed}
-                        onChange={this.props.markComplete.bind(this, id)}
+                        onChange={markComplete.bind(this, id)}
+                        onKeyPress={this.handleEnterKeyPress(
+                            markComplete.bind(this, id)
+                        )}
                     />
                     {title}
                     <DeleteIcon
-                        onClick={this.props.deleteToDo.bind(this, id)}
+                        onClick={deleteToDo.bind(this, id)}
+                        onKeyPress={this.handleEnterKeyPress(
+                            deleteToDo.bind(this, id)
+                        )}
                         className='iconStyle'
+                        tabIndex={0}
                     />
                 </p>
             </Card>
