@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from '@material-ui/core';
+import LaunchIcon from '@material-ui/icons/Launch';
 
 export default function About() {
     return (
@@ -16,8 +17,10 @@ export default function About() {
                         href='https://www.npmjs.com/package/react-simple-storage'
                         target='_blank'
                         rel='noopener noreferrer'
+                        title='React Simple Storage Page'
                     >
                         React Simple Storage
+                        <LaunchIcon className='launchIcon' />
                     </a>
                     .
                     <br />
@@ -26,8 +29,10 @@ export default function About() {
                         href='https://github.com/JohnBendfeldt/todo-list-ts-react'
                         target='_blank'
                         rel='noopener noreferrer'
+                        title='App Github Page'
                     >
                         here
+                        <LaunchIcon className='launchIcon' />
                     </a>
                     .
                 </p>
