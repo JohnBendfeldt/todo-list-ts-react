@@ -34,6 +34,7 @@ export default class AddToDo extends Component<AddToDoProps> {
                         name='title'
                         value={this.state.title}
                         onChange={this.onChange}
+                        style={{ minWidth: '194.4px' }}
                     />
                     <Fab
                         color='secondary'

@@ -10,8 +10,16 @@ import './App.css';
 
 export default class App extends Component {
     state: { toDos: { id: string; title: string; completed: boolean }[] } = {
-        toDos: []
+        toDos: [
+            {
+                id: '1',
+                title: 'Add something you need to do',
+                completed: false
+            }
+        ]
     };
+
+    firstToDoAdded: boolean = false;
 
     markComplete = (id: string) => {
         this.setState({
@@ -30,15 +38,21 @@ export default class App extends Component {
         });
     };
 
-    addToDo = (title: string) => {
-        const newTodo = {
-            id: uuid.v4(),
-            title,
-            completed: false
-        };
-        this.setState({
-            toDos: [...this.state.toDos, newTodo]
-        });
+    addToDo = async (title: string) => {
+        if (title !== '') {
+            const newTodo = {
+                id: uuid.v4(),
+                title,
+                completed: false
+            };
+            await this.setState({
+                toDos: [...this.state.toDos, newTodo]
+            });
+            if (!this.firstToDoAdded) {
+                this.firstToDoAdded = true;
+                this.markComplete('1');
+            }
+        }
     };
 
     render() {
