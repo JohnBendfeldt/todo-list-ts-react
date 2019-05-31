@@ -47,13 +47,13 @@ const StyledMenuItem = withStyles(theme => ({
 export default function Header() {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
-    function handleClick(e: any) {
+    const handleClick = (e: any) => {
         setAnchorEl(e.currentTarget);
-    }
+    };
 
-    function handleClose() {
+    const handleClose = () => {
         setAnchorEl(null);
-    }
+    };
     return (
         <AppBar position='static' style={{ backgroundColor: '#2196F3' }}>
             <Toolbar variant='dense'>
