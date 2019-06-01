@@ -5,13 +5,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `node app.js`
-
-Runs the app in production mode. <br>
-This is how Heroku runs the application.
-Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
-For development `npm start` is recommended.
-
 ### `npm start`
 
 Runs the app in the development mode.<br>

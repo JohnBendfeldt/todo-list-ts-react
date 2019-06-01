@@ -1,8 +1,9 @@
 const express = require('express');
 const http = require('http');
+var enforce = require('express-sslify');
 const path = require('path');
 let app = express();
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(enforce.HTTPS(), express.static(path.join(__dirname, 'build')));
 app.get('/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });
